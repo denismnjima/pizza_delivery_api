@@ -21,3 +21,14 @@ class SignUpModel(BaseModel):
                 "is_staff":False
             }
         }
+
+class signUpResponse(BaseModel):
+    id : int
+    username: str
+    email: str
+    is_active: Optional[bool]
+    is_staff : Optional[bool]
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
