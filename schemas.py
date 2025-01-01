@@ -3,7 +3,7 @@ from typing import Optional
 
 
 class SignUpModel(BaseModel):
-    id: Optional[int]
+    id: Optional[int] = None
     username : str
     email: str
     password: str
