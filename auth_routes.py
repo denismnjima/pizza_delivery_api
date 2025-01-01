@@ -2,7 +2,7 @@ from fastapi import APIRouter,status
 from fastapi.exceptions import HTTPException
 from database import engine,Session
 from models import User
-from schemas import SignUpModel
+from schemas import SignUpModel,signUpResponse
 from werkzeug.security import generate_password_hash
 auth_routes = APIRouter(
     prefix= '/auth',
@@ -41,3 +41,5 @@ async def signup(user:SignUpModel):
 
     session.add(new_user)
     session.commit()
+
+    return signUpResponse.model_validate(new_user)
