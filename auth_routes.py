@@ -3,6 +3,7 @@ from fastapi.exceptions import HTTPException
 from database import engine,Session
 from models import User
 from schemas import SignUpModel
+from werkzeug.security import generate_password_hash
 auth_routes = APIRouter(
     prefix= '/auth',
     tags = ['auth']
@@ -33,7 +34,7 @@ async def signup(user:SignUpModel):
     new_user = User(
         username = user.username,
         email = user.db_email,
-        password = user.password,
+        password = generate_password_hash(user.password),
         is_active = user.is_active,
         is_staff = user.is_staff
     )
