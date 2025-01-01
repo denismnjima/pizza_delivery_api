@@ -33,7 +33,7 @@ async def signup(user:SignUpModel):
     
     new_user = User(
         username = user.username,
-        email = user.db_email,
+        email = user.email,
         password = generate_password_hash(user.password),
         is_active = user.is_active,
         is_staff = user.is_staff
